@@ -1,0 +1,29 @@
+<!-- styles.css -->
+body { font-family: 'Noto Sans KR', sans-serif; margin:0; padding:0; background:#fff; }
+.clock { font-size: 1rem; margin: 0.5rem; }
+
+/* custom styles */
+
+<!-- script.js -->
+// Button alert
+window.addEventListener('load', () => {
+  document.getElementById('alertBtn').addEventListener('click', () => {
+    alert('안녕하세요! Template 2입니다.');
+  });
+});
+// Clock update
+const zones2 = {
+  'time-Korea': 'Asia/Seoul',
+  'time-US': 'America/New_York',
+  'time-China': 'Asia/Shanghai',
+  'time-Japan': 'Asia/Tokyo'
+};
+function updateClocks2() {
+  const now = new Date();
+  for (const id in zones2) {
+    document.getElementById(id).textContent =
+      zones2[id].split('/')[1] + ': ' + now.toLocaleString('ko-KR', { timeZone: zones2[id], hour12: false });
+  }
+}
+setInterval(updateClocks2, 1000);
+updateClocks2();
