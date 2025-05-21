@@ -82,25 +82,37 @@ File: index-dashboard.html
         </div>
 
         
-
-       <!-- 캐나다 동부 시간 카드 -->
-       <div class="col-6 col-md-3">
-      <div class="country-name">
-      <img src="/static/libs/flags/ca.png" alt="캐나다 국기" class="flag-img" onerror="this.replaceWith(document.createTextNode('이미지 없음'))">
-      캐나다 동부 - 토론토 (Toronto), 몬트리올 (Montreal)
+<!-- 캐나다 동부 시간 카드 -->
+<div class="col-6 col-md-3">
+  <div class="card clock-card p-3 text-center bg-white">
+    <div class="country-name">
+      <img 
+        src="https://flagcdn.com/w40/ca.png" 
+        alt="캐나다 국기" 
+        class="flag-img" 
+        onerror="this.replaceWith(document.createTextNode('이미지 없음'))"
+      >
+      캐나다 동부
     </div>
     <div class="clock-time" id="time-EST">--:--:--</div>
-    <div class="clock-zone">America/Toronto (EST/EDT)</div>
+    <div class="clock-zone">Toronto / Montreal (EST)</div>
   </div>
+</div>
 
-  <!-- 캐나다 서부 시간 카드 -->
-        <div class="col-6 col-md-3">
-      <div class="country-name">
-      <img src="/static/libs/flags/ca.png" alt="캐나다 국기" class="flag-img" onerror="this.replaceWith(document.createTextNode('이미지 없음'))">
-      캐나다 서부 - 밴쿠버 (Vancouver)
+<!-- 캐나다 서부 시간 카드 -->
+<div class="col-6 col-md-3">
+  <div class="card clock-card p-3 text-center bg-white">
+    <div class="country-name">
+      <img 
+        src="https://flagcdn.com/w40/ca.png" 
+        alt="캐나다 국기" 
+        class="flag-img" 
+        onerror="this.replaceWith(document.createTextNode('이미지 없음'))"
+      >
+      캐나다 서부
     </div>
     <div class="clock-time" id="time-PST">--:--:--</div>
-    <div class="clock-zone">America/Vancouver (PST/PDT)</div>
+    <div class="clock-zone">Vancouver (PST)</div>
   </div>
 </div>
 
