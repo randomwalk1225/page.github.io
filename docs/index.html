@@ -1,7 +1,3 @@
-<!--
-통합 시간 대시보드 템플릿 (직접 URL 이미지를 이용한 국기 표시 및 오류 처리)
-File: index-dashboard.html
--->
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -59,7 +55,7 @@ File: index-dashboard.html
   <main class="container">
     <div class="row g-4">
 
-      <!-- 카드 컴포넌트 반복 -->
+      <!-- 대한민국 -->
       <div class="col-6 col-md-3">
         <div class="card clock-card p-3 text-center bg-white">
           <div class="country-name">
@@ -71,51 +67,43 @@ File: index-dashboard.html
         </div>
       </div>
 
+      <!-- 미국 동부 -->
       <div class="col-6 col-md-3">
         <div class="card clock-card p-3 text-center bg-white">
           <div class="country-name">
             <img src="https://flagcdn.com/w40/us.png" alt="미국 국기" class="flag-img" onerror="this.replaceWith(document.createTextNode('이미지 없음'))">
-            미국 
+            미국 동부
           </div>
           <div class="clock-time" id="time-US">--:--:--</div>
           <div class="clock-zone">New York (EST)</div>
         </div>
+      </div>
 
-        
-<!-- 캐나다 동부 시간 카드 -->
-<div class="col-6 col-md-3">
-  <div class="card clock-card p-3 text-center bg-white">
-    <div class="country-name">
-      <img 
-        src="https://flagcdn.com/w40/ca.png" 
-        alt="캐나다 국기" 
-        class="flag-img" 
-        onerror="this.replaceWith(document.createTextNode('이미지 없음'))"
-      >
-      캐나다 동부
-    </div>
-    <div class="clock-time" id="time-EST">--:--:--</div>
-    <div class="clock-zone">Toronto / Montreal (EST)</div>
-  </div>
-</div>
+      <!-- 캐나다 동부 -->
+      <div class="col-6 col-md-3">
+        <div class="card clock-card p-3 text-center bg-white">
+          <div class="country-name">
+            <img src="https://flagcdn.com/w40/ca.png" alt="캐나다 국기" class="flag-img" onerror="this.replaceWith(document.createTextNode('이미지 없음'))">
+            캐나다 동부
+          </div>
+          <div class="clock-time" id="time-EST">--:--:--</div>
+          <div class="clock-zone">Toronto / Montreal (EST)</div>
+        </div>
+      </div>
 
-<!-- 캐나다 서부 시간 카드 -->
-<div class="col-6 col-md-3">
-  <div class="card clock-card p-3 text-center bg-white">
-    <div class="country-name">
-      <img 
-        src="https://flagcdn.com/w40/ca.png" 
-        alt="캐나다 국기" 
-        class="flag-img" 
-        onerror="this.replaceWith(document.createTextNode('이미지 없음'))"
-      >
-      캐나다 서부
-    </div>
-    <div class="clock-time" id="time-PST">--:--:--</div>
-    <div class="clock-zone">Vancouver (PST)</div>
-  </div>
-</div>
+      <!-- 캐나다 서부 -->
+      <div class="col-6 col-md-3">
+        <div class="card clock-card p-3 text-center bg-white">
+          <div class="country-name">
+            <img src="https://flagcdn.com/w40/ca.png" alt="캐나다 국기" class="flag-img" onerror="this.replaceWith(document.createTextNode('이미지 없음'))">
+            캐나다 서부
+          </div>
+          <div class="clock-time" id="time-PST">--:--:--</div>
+          <div class="clock-zone">Vancouver (PST)</div>
+        </div>
+      </div>
 
+      <!-- 중국 -->
       <div class="col-6 col-md-3">
         <div class="card clock-card p-3 text-center bg-white">
           <div class="country-name">
@@ -127,7 +115,7 @@ File: index-dashboard.html
         </div>
       </div>
 
-
+      <!-- 일본 -->
       <div class="col-6 col-md-3">
         <div class="card clock-card p-3 text-center bg-white">
           <div class="country-name">
@@ -138,24 +126,35 @@ File: index-dashboard.html
           <div class="clock-zone">Tokyo (JST)</div>
         </div>
       </div>
-    </div>
+
+    </div><!-- /.row -->
   </main>
 
   <!-- Clock Script -->
   <script>
     const zones = {
       'time-Korea': { tz: 'Asia/Seoul' },
-      'time-US': { tz: 'America/New_York' },
+      'time-US':    { tz: 'America/New_York' },
+      'time-EST':   { tz: 'America/Toronto' },
+      'time-PST':   { tz: 'America/Vancouver' },
       'time-China': { tz: 'Asia/Shanghai' },
       'time-Japan': { tz: 'Asia/Tokyo' }
     };
+
     function updateClocks() {
       const now = new Date();
       for (const id in zones) {
         const el = document.getElementById(id);
-        el.textContent = now.toLocaleTimeString('ko-KR', { timeZone: zones[id].tz, hour12: false });
+        el.textContent = now.toLocaleTimeString('ko-KR', {
+          timeZone: zones[id].tz,
+          hour12: false,
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit'
+        });
       }
     }
+
     document.addEventListener('DOMContentLoaded', () => {
       updateClocks();
       setInterval(updateClocks, 1000);
