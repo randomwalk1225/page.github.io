@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>World Clocks Dashboard</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body {
+      background-color: #f8f9fa;
+      color: #343a40;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+    .clock-card {
+      border-radius: 0.75rem;
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+      transition: transform 0.2s;
+    }
+    .clock-card:hover {
+      transform: translateY(-5px);
+    }
+    .clock-time {
+      font-size: 2rem;
+      font-weight: 500;
+    }
+    .clock-zone {
+      font-size: 1rem;
+      color: #6c757d;
+    }
+    .country-name {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    .flag-img {
+      width: 32px;
+      height: 24px;
+      object-fit: cover;
+      border: 1px solid #dee2e6;
+    }
+  </style>
+</head>
+<body>
+  <header class="bg-white shadow-sm py-3 mb-5">
+    <div class="container text-center">
+      <h1 class="h3 mb-0">🌐 Global Time Dashboard</h1>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="row g-4">
+      <div class="col-6 col-md-3">
+        <div class="card clock-card p-3 text-center bg-white">
+          <div class="country-name">
+            <img src="https://flagcdn.com/w40/kr.png" alt="대한민국 국기" class="flag-img" onerror="this.replaceWith(document.createTextNode('이미지 없음'))" />
+            대한민국
+          </div>
+          <div class="clock-time" id="time-Korea">--:--:--</div>
+          <div class="clock-zone">Seoul (KST)</div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-3">
+        <div class="card clock-card p-3 text-center bg-white">
+          <div class="country-name">
+            <img src="https://flagcdn.com/w40/us.png" alt="미국 국기" class="flag-img" onerror="this.replaceWith(document.createTextNode('이미지 없음'))" />
+            미국
+          </div>
+          <div class="clock-time" id="time-US">--:--:--</div>
+          <div class="clock-zone">New York (EST)</div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-3">
+        <div class="card clock-card p-3 text-center bg-white">
+          <div class="country-name">
+            <img src="https://flagcdn.com/w40/cn.png" alt="중국 국기" class="flag-img" onerror="this.replaceWith(document.createTextNode('이미지 없음'))" />
+            중국 (베이징)
+          </div>
+          <div class="clock-time" id="time-China">--:--:--</div>
+          <div class="clock-zone">Beijing (CST)</div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-3">
+        <div class="card clock-card p-3 text-center bg-white">
+          <div class="country-name">
+            <img src="https://flagcdn.com/w40/hk.png" alt="홍콩 국기" class="flag-img" onerror="this.replaceWith(document.createTextNode('이미지 없음'))" />
+            홍콩
+          </div>
+          <div class="clock-time" id="time-HK">--:--:--</div>
+          <div class="clock-zone">Hong Kong (HKT)</div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-3">
+        <div class="card clock-card p-3 text-center bg-white">
+          <div class="country-name">
+            <img src="https://flagcdn.com/w40/jp.png" alt="일본 국기" class="flag-img" onerror="this.replaceWith(document.createTextNode('이미지 없음'))" />
+            일본
+          </div>
+          <div class="clock-time" id="time-Japan">--:--:--</div>
+          <div class="clock-zone">Tokyo (JST)</div>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-3">
+        <div class="card clock-card p-3 text-center bg-white">
+          <div class="country-name">
+            <img src="https://flagcdn.com/w40/gb.png" alt="영국 국기" class="flag-img" onerror="this.replaceWith(document.createTextNode('이미지 없음'))" />
+            영국
+          </div>
+          <div class="clock-time" id="time-UK">--:--:--</div>
+          <div class="clock-zone">London (GMT)</div>
+        </div>
+      </div>
+      
+      <!-- 말레이시아 -->
+      <div class="col-6 col-md-3">
+        <div class="card clock-card p-3 text-center bg-white">
+          <div class="country-name">
+            <img src="https://flagcdn.com/w40/my.png" alt="말레이시아 국기" class="flag-img" onerror="this.replaceWith(document.createTextNode('이미지 없음'))" />
+            말레이시아
+          </div>
+          <div class="clock-time" id="time-MY">--:--:--</div>
+          <div class="clock-zone">Kuala Lumpur (MYT)</div>
+        </div>
+      </div>
+
+      <!-- 태국 -->
+      <div class="col-6 col-md-3">
+        <div class="card clock-card p-3 text-center bg-white">
+          <div class="country-name">
+            <img src="https://flagcdn.com/w40/th.png" alt="태국 국기" class="flag-img" onerror="this.replaceWith(document.createTextNode('이미지 없음'))" />
+            태국
+          </div>
+          <div class="clock-time" id="time-TH">--:--:--</div>
+          <div class="clock-zone">Bangkok (ICT)</div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Clock Script -->
+  <script>
+    const zones = {
+      'time-Korea': { tz: 'Asia/Seoul' },
+      'time-US': { tz: 'America/New_York' },
+      'time-China': { tz: 'Asia/Shanghai' },  // 베이징
+      'time-HK': { tz: 'Asia/Hong_Kong' },
+      'time-Japan': { tz: 'Asia/Tokyo' },
+      'time-UK': { tz: 'Europe/London' },
+      'time-MY': { tz: 'Asia/Kuala_Lumpur' },
+      'time-TH': { tz: 'Asia/Bangkok' }
+    };
+
+    function updateClocks() {
+      const now = new Date();
+      for (const id in zones) {
+        const el = document.getElementById(id);
+        if (el) {
+          el.textContent = now.toLocaleTimeString('ko-KR', {
+            timeZone: zones[id].tz,
+            hour12: false
+          });
+        }
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      updateClocks();
+      setInterval(updateClocks, 1000);
+    });
+  </script>
+
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
